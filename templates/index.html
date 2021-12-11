@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang='eng'>
+
+<head>
+    <meta charset = 'UTF-8'>
+    <meta name = 'viewport' content='width-device-width, initial-scale = 1.0'>
+    <link rel = 'stylesheet' href="{{ url_for('static' , filename = 'css/style.css') }}" type='text/css'>
+</head>
+
+<body>
+    <div class = 'main'>
+        <div class = 'top'> <h1> Customer Churn Prediction </h1></div>
+
+        <div class = 'bottom'>
+            <form action="{{ url_for('predict')}}" method="post" id = 'input' autocomplete="off">
+                <div class = 'first_left'>
+                    <div class = 'first_left_col'>
+                        <label> Gender </label><br>
+                            <select class = 'sel_option' name = 'Gender' required>
+                                <option value = 'gender'> Select Gender </option>
+                                <option value = 'Male'> Male </option>
+                                <option value = 'Female'> Female </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'first_left_col'>
+                        <label> Phone Service  </label><br>
+                        <select class = 'sel_option' name = 'PhoneService' required>
+                            <option value = 'phoneservice '> Select PhoneService  </option>
+                            <option value = 'Yes'> Yes </option>
+                            <option value = 'No'> No </option> 
+                        </select>
+                    </div>
+
+                    <div class = 'first_left_col'>
+                        <label> Online Backup </label><br>
+                            <select class = 'sel_option' name = 'OnlineBackup' required>
+                                <option value = 'onlinebackup'> Select OnlineBackup </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                                <option value = 'No internet service'> No internet service </option>
+                            </select>
+                    </div>
+
+                    <div class = 'first_left_col'>
+                        <label> Streaming Movies </label><br>
+                            <select class = 'sel_option' name = 'StreamingMovies' required>
+                                <option value = 'streamingmovies  '> Select StreamingMovies  </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                                <option value = 'No internet service'> No internet service </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'first_left_col'>
+                        <label> Monthly Charges (In Dollars) </label><br>
+                        <input name = 'MonthlyCharges' placeholder= "Enter MonthlyCharges" class = 'input' required>
+                    </div>
+
+                </div>
+
+                <div class = 'second_left'>
+                    <div class = 'second_left_col'>
+                        <label> Senior Citizen </label><br>
+                            <select class = 'sel_option' name = 'SeniorCitizen' required>
+                                <option value = 'senior_citizen'> Select SeniorCitizen </option>
+                                <option value = '1'> 1 (Senior Citizen) </option>
+                                <option value = '0'> 0 (Non-Senior Citizen) </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'second_left_col'>
+                        <label> Multiple Lines   </label><br>
+                            <select class = 'sel_option' name = 'MultipleLines' required>
+                                <option value = 'multiplelines  '> Select MultipleLines  </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                                <option value = 'No phone service'> No phone service </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'second_left_col'>
+                        <label> Device Protection </label><br>
+                            <select class = 'sel_option' name = 'DeviceProtection' required>
+                                <option value = 'deviceprotection'> Select DeviceProtection </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                                <option value = 'No internet service'> No internet service </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'second_left_col'>
+                        <label> Contract </label><br>
+                            <select class = 'sel_option' name = 'Contract' required>
+                                <option value = 'internetservice'> Select Contract </option>
+                                <option value = 'Month-to-month'> Month-to-month </option>
+                                <option value = 'One year'> One year </option> 
+                                <option value = 'Two year'> Two year </option>
+                            </select>
+                    </div>
+
+                    <div class = 'second_left_col'>
+                        <label> Total Charges (In Dollars) </label><br>
+                        <input name = 'TotalCharges' placeholder= "Enter TotalCharges" class = 'input' required>
+                    </div>
+
+                </div>
+
+                <div class = 'first_right'>
+                    <div class = 'first_right_col'>
+                        <label> Partner </label><br>
+                            <select class = 'sel_option' name = 'Partner' required>
+                                <option value = 'partner'> Select Partner </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'first_right_col'>
+                        <label> Internet Service  </label><br>
+                            <select class = 'sel_option' name = 'InternetService' required>
+                                <option value = 'internetservice  '> Select InternetService </option>
+                                <option value = 'DSL'> DSL </option>
+                                <option value = 'Fiber optic'> Fiber optic </option> 
+                                <option value = 'No'> No </option>
+                            </select>
+                    </div>
+
+                    <div class = 'first_right_col'>
+                        <label> Tech Support </label><br>
+                            <select class = 'sel_option' name = 'TechSupport' required>
+                                <option value = 'techsupport'> Select TechSupport </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                                <option value = 'No internet service'> No internet service </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'first_right_col'>
+                        <label> Paperless Billing </label><br>
+                            <select class = 'sel_option' name = 'PaperlessBilling' required>
+                                <option value = 'paperlessbilling  '> Select PaperlessBilling </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'first_right_col'>
+                        <label> Tenure (In Months) </label><br>
+                        <input name = 'Tenure' placeholder= "Enter Tenure (eg: 5, 16, 32)" class = 'input' required>
+                    </div>
+
+                </div>
+
+                <div class = 'second_right'>
+                    <div class = 'second_right_col'>
+                        <label> Dependents </label><br>
+                            <select class = 'sel_option' name = 'Dependents' required>
+                                <option value = 'dependents'> Select Dependents </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'second_right_col'>
+                        <label> Online Security </label><br>
+                            <select class = 'sel_option' name = 'OnlineSecurity' required>
+                                <option value = 'onlinesecurity'> Select OnlineSecurity </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option>
+                                <option value = 'No internet service'> No internet service </option> 
+                            </select>
+                    </div>
+
+                    <div class = 'second_right_col'>
+                        <label> Streaming TV </label><br>
+                            <select class = 'sel_option' name = 'StreamingTV' required>
+                                <option value = 'streamingtv'> Select StreamingTV  </option>
+                                <option value = 'Yes'> Yes </option>
+                                <option value = 'No'> No </option> 
+                                <option value = 'No internet service'> No internet service </option>
+                            </select>
+                    </div>
+
+                    <div class = 'second_right_col'>
+                        <label> Payment Method  </label><br>
+                            <select class = 'sel_option' name = 'PaymentMethod' required>
+                                <option value = 'paymentmethod'> Select PaymentMethod   </option>
+                                <option value = 'Electronic check'> Electronic check </option>
+                                <option value = 'Mailed check'> Mailed check </option> 
+                                <option value = 'Bank transfer (automatic)'> Bank transfer (automatic) </option>
+                                <option value = 'Credit card (automatic)'> Credit card (automatic) </option>
+                            </select>
+                    </div>
+
+                </div>
+
+                <div class = 'sub'>
+                    <input type = 'submit' value = 'Submit' id = 'submit'>
+                </div>
+
+            </form>
+
+            <div class = 'pred'>
+                <h3> {{ prediction_text }} </h3>
+            </div>
+
+        </div>
+    </div>
+    
+</body>
+</html>
